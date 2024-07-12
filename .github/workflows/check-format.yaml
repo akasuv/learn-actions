@@ -2,6 +2,8 @@ name: Check format
 on:
     push:
         branches: ["main"]
+    pull_request:
+        branches: ["main"]
 jobs:
     prettier-check:
         runs-on: ubuntu-latest
