@@ -1,9 +1,8 @@
-name: Code Formatter
 on: 
   push:
     branches: [ "main" ]
 jobs:
-  prettier-write:
+  prettier-check:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,12 +22,7 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Format code
-        run: pnpm format
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "styles: format code"
-          branch: ${{ github.head_ref }}
+      - name: Check format
+        run: pnpm check-format
 
 
